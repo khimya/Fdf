@@ -6,7 +6,7 @@
 /*   By: ybenbrai <ybenbrai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 03:06:56 by ybenbrai          #+#    #+#             */
-/*   Updated: 2019/10/10 03:33:48 by ybenbrai         ###   ########.fr       */
+/*   Updated: 2019/10/10 04:36:21 by ybenbrai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int ft_parse(char const *tab)
     i = 0;
     char **strsplit_return;
     strsplit_return =  ft_strsplit(tab,' ');
-    while (strsplit_return[i])
+    while (strsplit_return[i + 1])
     {
         if (ft_strlen(strsplit_return[i]) != ft_strlen(strsplit_return[i + 1]))
         {

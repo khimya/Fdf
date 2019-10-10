@@ -6,19 +6,17 @@
 /*   By: ybenbrai <ybenbrai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 23:21:15 by ybenbrai          #+#    #+#             */
-/*   Updated: 2019/10/10 03:33:38 by ybenbrai         ###   ########.fr       */
+/*   Updated: 2019/10/10 04:19:52 by ybenbrai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
-#include "libft/libft.h"
 
 int		main(int c, char **v)
 {
-	int		fd; //to store the file discriptor of the file
-	char	*line; //to store the line
+	int		fd;
+	char	*line;
 	
-
 	if (c == 2)
 	{
 		fd = open(v[1], O_RDONLY);
