@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybenbrai <ybenbrai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybenbrai <benbraitit@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 17:48:35 by kbahrar           #+#    #+#             */
-/*   Updated: 2019/10/17 22:28:51 by ybenbrai         ###   ########.fr       */
+/*   Updated: 2019/10/18 05:23:25 by ybenbrai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,33 +28,13 @@ static void	ft_check_line(char *line)
 	}
 }
 
-// static void	boucle_file(int fd, char **tab, char *line, t_data *data)
-// {
-// 	int	i;
-// 	int w1;
-
-// 	i = 1;
-// 	while (get_next_line(fd, &line) != 0)
-// 	{
-// 		ft_check_line(line);
-// 		if (!(tab = ft_strsplit(line, ' ')))
-// 			ft_error("FDF: problem in content.");
-// 		ft_add_pts(tab, &data->points, i++);
-// 		w1 = ft_count_tab(tab);
-// 		if (data->w != w1)
-// 			ft_error("FDF: not the same width.");
-// 		free(line);
-// 		free(tab);
-// 	}
-// 	data->h = i;
-// }
-
-static void	ft_check_file(int fd, t_data *data)
+static void	ft_check_file(int fd, t_data *data/*, int zoom*/)
 {
 	char	*line;
 	char	**tab;
 	int		i;
 	int		j;
+	int zoom = 30;
 
 	i = 0;
 	tab = NULL;
@@ -69,7 +49,11 @@ static void	ft_check_file(int fd, t_data *data)
 		data->width = ft_count_tab(tab);
 		data->points[i] = (t_point *)malloc(sizeof(t_point) * data->width);
 		while (tab[++j])
+		{
 			data->points[i][j].value = ft_atoi(tab[j]);
+			data->points[i][j].x = j * zoom +  HORIZONTAL / 2;
+			data->points[i][j].y = i * zoom + VERTICAL / 2;
+		}
 		i++;
 		free(line);
 		free(tab);

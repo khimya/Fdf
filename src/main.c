@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybenbrai <ybenbrai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybenbrai <benbraitit@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 17:40:58 by kbahrar           #+#    #+#             */
-/*   Updated: 2019/10/17 20:33:05 by ybenbrai         ###   ########.fr       */
+/*   Updated: 2019/10/18 05:17:53 by ybenbrai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		ft_error("FDF: error in arguments.");
 	ft_check(av[1], &data);
+	rotate(&data);
 	ft_draw(&data);
 	return (0);
 }

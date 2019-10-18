@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybenbrai <ybenbrai@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ybenbrai <benbraitit@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 17:39:00 by kbahrar           #+#    #+#             */
-/*   Updated: 2019/10/17 21:22:14 by ybenbrai         ###   ########.fr       */
+/*   Updated: 2019/10/18 05:18:32 by ybenbrai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 # include <mlx.h>
 # include "../libft/libft.h"
 # include <fcntl.h>
+# include <math.h>
 
 # define HORIZONTAL	1440
 # define VERTICAL 900
 
 typedef struct  s_point
 {
+	int				x;
+	int				y; 
     int             value;
     int             color;
 }               t_point;
@@ -45,7 +48,9 @@ void                ft_error(char *str);
 void		        ft_check(char *nom, t_data *data);
 void                ft_draw(t_data	*data);
 void		        ft_add_pts(char **tab, t_point **p, int y);
-void                ft_line(t_coord *p0, t_coord *p1, int color, t_data *data);
+void ft_line(int color, t_point p0, t_point p1 , t_data *data);
+void			rotate(t_data *data);
+//t_coord				rotate(t_coord from, t_data *data, int i, int j);
 //void		        draw_line(t_window *w, int color, t_point p0, t_point p1);
 
 #endif
