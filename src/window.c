@@ -3,54 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybenbrai <benbraitit@gmail.com>            +#+  +:+       +#+        */
+/*   By: ybenbrai <ybenbrai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 22:18:01 by ybenbrai          #+#    #+#             */
-/*   Updated: 2019/10/18 05:04:38 by ybenbrai         ###   ########.fr       */
+/*   Updated: 2019/10/25 01:49:35 by ybenbrai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void ft_line(int color, t_point p0, t_point p1 , t_data *data)
- {
-  int dx = abs(p1.x - p0.x);
-  int sx = p0.x < p1.x ? 1 : -1;
-  int dy = abs( p1.y - p0.y);
-  int sy = p0.y < p1.y ? 1 : -1;
-  int err = (dx > dy ? dx : -dy) / 2, e2;
+void	ft_line(int color, t_point p0, t_point p1, t_data *data)
+{
+	int err[2];
+	int tab[4];
 
-  while (1)
-  {
-    mlx_pixel_put(data->mlx_ptr, data->win_ptr, p0.x, p0.y, color);
-
-    if (p0.x == p1.x && p0.y == p1.y)
-        break;
-    e2 = err;
-    if (e2 >-dx) { err -= dy; p0.x += sx; }
-    if (e2 < dy) { err += dx; p0.y += sy; }
-  }
+	tab[0] = abs(p1.x - p0.x);
+	tab[2] = p0.x < p1.x ? 1 : -1;
+	tab[1] = abs(p1.y - p0.y);
+	tab[3] = p0.y < p1.y ? 1 : -1;
+	err[0] = (tab[0] > tab[1] ? tab[0] : -tab[1]) / 2;
+	while (1)
+	{
+		mlx_pixel_put(data->mlx_ptr, data->win_ptr, p0.x, p0.y + 10, color);
+		if (p0.x == p1.x && p0.y == p1.y)
+			break ;
+		err[1] = err[0];
+		if (err[1] > -tab[0])
+		{
+			err[0] -= tab[1];
+			p0.x += tab[2];
+		}
+		if (err[1] < tab[1])
+		{
+			err[0] += tab[0];
+			p0.y += tab[3];
+		}
+	}
 }
 
-
-void	ft_draw(t_data	*data)
+void	ft_draw(t_data *data)
 {
-	int j;
-	int i;
+	int	j;
+	int	i;
 
-	i = 0;
-	while (i <= data->hight - 1)
+	i = -1;
+	while (++i <= data->hight - 1)
 	{
-		j = 0;
-		while (j < data->width)
+		j = -1;
+		while (++j < data->width)
 		{
-			if (j +1 < data->width)
-				ft_line(0xbada55, data->points[i][j], data->points[i][j + 1] ,data);
+			if (j + 1 < data->width)
+				ft_line(data->p[i][j].color, data->p[i][j],
+						data->p[i][j + 1], data);
 			if (i + 1 < data->hight)
-				ft_line(0xbada55, data->points[i][j], data->points[i + 1][j] ,data);
-			j++;
+				ft_line(data->p[i][j].color, data->p[i][j],
+						data->p[i + 1][j], data);
 		}
-			i++;
 	}
-	mlx_loop(data->mlx_ptr);
 }

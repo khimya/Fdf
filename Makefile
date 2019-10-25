@@ -6,12 +6,12 @@
 #    By: ybenbrai <ybenbrai@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/23 19:48:26 by kbahrar           #+#    #+#              #
-#    Updated: 2019/10/18 00:30:53 by ybenbrai         ###   ########.fr        #
+#    Updated: 2019/10/19 02:40:52 by ybenbrai         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
-SRC =  src/ft_check.c src/main.c src/window.c src/rotation.c
+SRC =  src/ft_check.c src/main.c src/window.c src/key.c src/rotation.c
 OBJ = $(SRC:.c=.o)
 LIBF = libft/libft.a
 LIBS = fdf.a
